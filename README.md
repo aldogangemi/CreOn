@@ -1,7 +1,7 @@
 # CreOn
 An integrated ontology of creativity theories, using OWL2:
 
-(a) Personal creativity
+(a) Personal creativity:
 Wallace's personal creativity phases
 Guilford's personal creativity traits
 Smith's cognitive creativity
