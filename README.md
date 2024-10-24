@@ -27,3 +27,5 @@ Some important questions need special investigation, concerning computational cr
 - AI is not a person, and how could we distinguish between personal and social for an LLM?
 
 - Opera aperta goes beyond production vs. fruition (the patina of a monument, table, and metaphorically a book or a painting, let alone Sistine Chapel colors ...)
+
+Specific folders (e.g., 4Pexp for Rhodes' 4P theory) will contain data and code for experiments dealing with creativity categories and correlation to personal traits.
