@@ -2,22 +2,22 @@
 An integrated ontology of creativity theories, using OWL2:
 
 (a) Personal creativity:
-Wallace's personal creativity phases
-Guilford's personal creativity traits
-Smith's cognitive creativity
+Wallace's personal creativity phases,
+Guilford's personal creativity traits,
+Smith's cognitive creativity,
 Moruzzi's personal creativity keys
 
 (b) social creativity:
-Csikszentmihali's domain/field of creativity
-Amabile's expertise/thinking/motivation
+Csikszentmihali's domain/field of creativity,
+Amabile's expertise/thinking/motivation,
 Sternberg's creative personal traits
 
 (c) dual personal/social creativity:
-Gardner's multidimensional theory (personality plus context)
-Rhodes' 4P theory
-Simonton's c/C, creativity function theory, divergence/error
-Corazza's mental/social process
-Jenning's computational creativity
+Gardner's multidimensional theory (personality plus context),
+Rhodes' 4P theory,
+Simonton's c/C, creativity function theory, divergence/error,
+Corazza's mental/social process,
+Jenning's computational creativity,
 
 (d) neuro creativity:
 Kenett's metaanalysis of neural correlates of creativity
