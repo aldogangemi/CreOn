@@ -8,7 +8,8 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix creon: <http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#> .
-@base <http://www.ontologydesignpatterns.org/ont/creativity/creon.owl> .
+@prefix fschema: <https://w3id.org/framester/schema/> .
+@base <http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#> .
 
 <http://www.ontologydesignpatterns.org/ont/creativity/creon.owl> rdf:type owl:Ontology ;
                                                                   dc:creator "Aldo Gangemi" ,
@@ -40,8 +41,13 @@ Some important questions need special investigation, concerning computational cr
 
 - AI is not a person, and how could we distinguish between personal and social for an LLM?
 
-- Opera aperta goes beyond production vs. fruition (the patina of a monument, table, and metaphorically a book or a painting, let alone Sistine Chapel colors ...)""" ;
-                                                                  owl:versionInfo "1.1, September 12th, 2023" .
+- Opera aperta goes beyond production vs. fruition (the patina of a monument, table, and metaphorically a book or a painting, let alone Sistine Chapel colors ...)
+
+Version 1.2: added support for modelling Guilford's divergence as the search for a meta-convergence connecting two convergent but unrelated ideas.
+
+Version 1.3: added the divergent dimension to products.""" ;
+                                                                  owl:versionInfo "1.2, February 22nd, 2024" ,
+                                                                                  "1.3, May 4th, 2025" .
 
 #################################################################
 #    Annotation properties
@@ -71,7 +77,7 @@ dc:date rdf:type owl:AnnotationProperty .
 creon:atLocation rdf:type owl:ObjectProperty ;
                  rdfs:domain creon:CreativitySituation ;
                  rdfs:range owl:Thing ;
-                 dc:creator "Aldo Gangemi"^^xsd:string ;
+                 dc:creator "Aldo Gangemi" ;
                  dc:date "2023-09-14T08:35:59Z"^^xsd:dateTime .
 
 
@@ -79,7 +85,7 @@ creon:atLocation rdf:type owl:ObjectProperty ;
 creon:atTime rdf:type owl:ObjectProperty ;
              rdfs:domain creon:CreativitySituation ;
              rdfs:range dul:TimeInterval ;
-             dc:creator "Aldo Gangemi"^^xsd:string ;
+             dc:creator "Aldo Gangemi" ;
              dc:date "2023-09-14T08:35:53Z"^^xsd:dateTime .
 
 
@@ -120,7 +126,7 @@ creon:correlatesWith rdf:type owl:ObjectProperty ,
 creon:exhibitedBy rdf:type owl:ObjectProperty ;
                   rdfs:domain creon:PsychophysiologicalState ;
                   rdfs:range dul:NaturalPerson ;
-                  dc:creator "Aldo Gangemi"^^xsd:string ;
+                  dc:creator "Aldo Gangemi" ;
                   dc:date "2023-09-04T15:01:13Z"^^xsd:dateTime ;
                   rdfs:label "exhibited by" .
 
@@ -138,7 +144,7 @@ creon:focusedOn rdf:type owl:ObjectProperty ;
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#hasPart
 creon:hasPart rdf:type owl:ObjectProperty ,
                        owl:TransitiveProperty ;
-              dc:creator "Aldo Gangemi"^^xsd:string ;
+              dc:creator "Aldo Gangemi" ;
               dc:date "2023-09-06T16:55:45Z"^^xsd:dateTime ;
               rdfs:label "has part" .
 
@@ -164,6 +170,12 @@ creon:implementedAs rdf:type owl:ObjectProperty ;
                     rdfs:label "implemented as" .
 
 
+###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#induces
+creon:induces rdf:type owl:ObjectProperty ;
+              rdfs:domain creon:CreativitySituation ;
+              rdfs:range creon:CreativitySituation .
+
+
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#influenced
 creon:influenced rdf:type owl:ObjectProperty ;
                  rdfs:domain creon:InfluenceDynamics ;
@@ -174,7 +186,7 @@ creon:influenced rdf:type owl:ObjectProperty ;
                                             dul:Agent
                                           )
                             ] ;
-                 dc:creator "Aldo Gangemi"^^xsd:string ;
+                 dc:creator "Aldo Gangemi" ;
                  dc:date "2023-09-14T08:35:45Z"^^xsd:dateTime .
 
 
@@ -194,7 +206,7 @@ creon:influencedBy rdf:type owl:ObjectProperty ;
                                               dul:Agent
                                             )
                               ] ;
-                   dc:creator "Aldo Gangemi"^^xsd:string ;
+                   dc:creator "Aldo Gangemi" ;
                    dc:date "2023-09-04T15:43:02Z"^^xsd:dateTime ;
                    rdfs:comment "A general influence relation between agents, processes, creative products, or ideas. Specific axioms apply to dependencies between influencing and influenced entities." ;
                    rdfs:label "influenced by" .
@@ -213,7 +225,7 @@ creon:influencer rdf:type owl:ObjectProperty ;
                  owl:propertyChainAxiom ( creon:influenced
                                           creon:influencedBy
                                         ) ;
-                 dc:creator "Aldo Gangemi"^^xsd:string ;
+                 dc:creator "Aldo Gangemi" ;
                  dc:date "2023-09-14T08:35:38Z"^^xsd:dateTime .
 
 
@@ -221,7 +233,7 @@ creon:influencer rdf:type owl:ObjectProperty ;
 creon:observedDuring rdf:type owl:ObjectProperty ;
                      rdfs:domain creon:ExperimentalFinding ;
                      rdfs:range creon:PersonalProcess ;
-                     dc:creator "Aldo Gangemi"^^xsd:string ;
+                     dc:creator "Aldo Gangemi" ;
                      dc:date "2023-09-06T16:31:26Z"^^xsd:dateTime ;
                      rdfs:label "observed during" .
 
@@ -234,14 +246,14 @@ creon:observedIn rdf:type owl:ObjectProperty ;
                                             dul:NaturalPerson
                                           )
                             ] ;
-                 dc:creator "Aldo Gangemi"^^xsd:string ;
+                 dc:creator "Aldo Gangemi" ;
                  dc:date "2023-09-06T16:31:08Z"^^xsd:dateTime ;
                  rdfs:label "observed in" .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#onTask
 creon:onTask rdf:type owl:ObjectProperty ;
-             dc:creator "Aldo Gangemi"^^xsd:string ;
+             dc:creator "Aldo Gangemi" ;
              dc:date "2023-09-06T17:14:03Z"^^xsd:dateTime ;
              rdfs:label "on task" .
 
@@ -254,6 +266,16 @@ creon:operatesIn rdf:type owl:ObjectProperty ;
                  dc:date "2023-08-31T12:31:20Z"^^xsd:dateTime ;
                  rdfs:comment "The relation between artist and its environnment" ;
                  rdfs:label "operates in" .
+
+
+###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#optimizes
+creon:optimizes rdf:type owl:ObjectProperty ;
+                rdfs:domain creon:MetaConvergence ;
+                rdfs:range [ rdf:type owl:Class ;
+                             owl:unionOf ( creon:Convergence
+                                           creon:Divergence
+                                         )
+                           ] .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#participantIn
@@ -301,7 +323,7 @@ creon:traitOf rdf:type owl:ObjectProperty ;
 creon:usingMethod rdf:type owl:ObjectProperty ;
                   rdfs:domain creon:ExperimentalFinding ;
                   rdfs:range creon:ExperimentalMethod ;
-                  dc:creator "Aldo Gangemi"^^xsd:string ;
+                  dc:creator "Aldo Gangemi" ;
                   dc:date "2023-09-06T16:52:27Z"^^xsd:dateTime ;
                   rdfs:label "using method" .
 
@@ -361,7 +383,7 @@ creon:utilityObviousness rdf:type owl:DatatypeProperty ;
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#ActionDynamics
 creon:ActionDynamics rdf:type owl:Class ;
                      rdfs:subClassOf creon:PersonalSituation ;
-                     dc:creator "Aldo Gangemi"^^xsd:string ;
+                     dc:creator "Aldo Gangemi" ;
                      dc:date "2023-09-06T15:43:36Z"^^xsd:dateTime ;
                      rdfs:label "Action Dynamics" ;
                      <http://www.w3.org/ns/prov#wasAttributedTo> "From Corazza's DUCP (2019): Actions that influence and shape the creative process, decisions, and directions, with a feedback effect." .
@@ -370,14 +392,14 @@ creon:ActionDynamics rdf:type owl:Class ;
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#ActivationOfNeurotransmitter
 creon:ActivationOfNeurotransmitter rdf:type owl:Class ;
                                    rdfs:subClassOf creon:PsychophysiologicalState ;
-                                   dc:creator "Aldo Gangemi"^^xsd:string ;
+                                   dc:creator "Aldo Gangemi" ;
                                    dc:date "2023-09-06T17:19:28Z"^^xsd:dateTime .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#Adaptability
 creon:Adaptability rdf:type owl:Class ;
                    rdfs:subClassOf creon:PersonalAbility ;
-                   dc:creator "Aldo Gangemi"^^xsd:string ;
+                   dc:creator "Aldo Gangemi" ;
                    dc:date "2023-09-06T15:56:27Z"^^xsd:dateTime ;
                    rdfs:label "Adaptability" ;
                    <http://www.w3.org/ns/prov#wasAttributedTo> "Capacity to adjust to new conditions (Corazza, 2019)." .
@@ -396,7 +418,7 @@ creon:AnalyticIntelligence rdf:type owl:Class ;
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#ArtificialAgent
 creon:ArtificialAgent rdf:type owl:Class ;
                       rdfs:subClassOf dul:Agent ;
-                      dc:creator "Aldo Gangemi"^^xsd:string ;
+                      dc:creator "Aldo Gangemi" ;
                       dc:date "2023-09-14T09:08:58Z"^^xsd:dateTime ;
                       rdfs:comment "An artificially constructed agent" ;
                       rdfs:label "Artificial Agent" .
@@ -404,7 +426,7 @@ creon:ArtificialAgent rdf:type owl:Class ;
 
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#AssociativeProcess
 creon:AssociativeProcess rdf:type owl:Class ;
-                         rdfs:subClassOf creon:PersonalAbility ,
+                         rdfs:subClassOf creon:ConsciousProcess ,
                                          [ rdf:type owl:Restriction ;
                                            owl:onProperty [ owl:inverseOf creon:hasPart
                                                           ] ;
@@ -427,24 +449,67 @@ creon:BestPractice rdf:type owl:Class ;
 
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#BrainArea
 creon:BrainArea rdf:type owl:Class ;
-                dc:creator "Aldo Gangemi"^^xsd:string ;
+                dc:creator "Aldo Gangemi" ;
                 dc:date "2023-09-04T15:27:10Z"^^xsd:dateTime ;
                 rdfs:label "Brain area" .
+
+
+###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#CognitiveDivergence
+creon:CognitiveDivergence rdf:type owl:Class ;
+                          rdfs:subClassOf creon:Divergence ,
+                                          creon:PersonalProcess ;
+                          dc:creator "Aldo Gangemi" ;
+                          dc:date "2024-06-11T08:29:21Z"^^xsd:dateTime ;
+                          rdfs:comment """Mental process of thinking in non-linear, non-conventional ways, generating a variety of ideas or solutions.
+
+Neural plasticity enables the brain's capacity for divergent thinking, allowing the generation of creative ideas by connecting disparate concepts.
+
+It increases with the stimulation of diverse cognitive inputs. High in open-ended tasks.
+
+It leads to using known cognitive frameworks in novel contexts, or to blend different methods, e.g., applying mathematical concepts to solve social problems.""" ;
+                          <http://www.w3.org/ns/prov#wasAttributedTo> "Runco, M. A., & Acar, S. (2012). Divergent thinking as an indicator of creative potential, Guilford (1950), Creativity research" .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#ConsciousProcess
 creon:ConsciousProcess rdf:type owl:Class ;
                        rdfs:subClassOf creon:PersonalProcess ;
-                       dc:creator "Aldo Gangemi"^^xsd:string ;
+                       dc:creator "Aldo Gangemi" ;
                        dc:date "2023-09-06T16:11:00Z"^^xsd:dateTime ;
                        rdfs:label "Conscious Process" ;
                        <http://www.w3.org/ns/prov#wasAttributedTo> "Wallas (1926): identification of a goal and verification of an idea." .
 
 
+###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#Convergence
+creon:Convergence rdf:type owl:Class ;
+                  rdfs:subClassOf creon:CreativitySituation ,
+                                  fschema:ConceptualFrame ;
+                  rdfs:comment """Convergent thinking is the process of finding a single, correct solution to a problem. It involves focusing on coherent steps and utilizing existing knowledge to arrive at a specific answer.
+Characteristics include:
+- Logic and Order: Emphasizes logical reasoning and systematic approaches.
+- Accuracy: Seeks the most accurate and appropriate solution.
+- Application of Rules: Utilizes established rules and procedures to solve problems.
+- Elimination of Alternatives: Narrows down multiple possibilities to find the best answer.
+Examples: Standardized tests, mathematical problems, and tasks requiring a single solution.
+
+Convergent Thinking is essential for tasks that require a definitive answer and where precision is critical. It helps in refining ideas and ensuring they are practical and viable.
+Divergent Thinking is crucial for the initial stages of problem-solving, where generating a wide range of ideas and exploring different possibilities can lead to innovative solutions.
+Guilford's theory suggests that both types of thinking are necessary for creativity. Effective problem-solving and creative processes often involve alternating between divergent and convergent thinking, allowing individuals to generate a broad array of ideas and then narrow them down to the most effective solutions.""" ;
+                  <http://www.w3.org/ns/prov#wasAttributedTo> "Guilford, J.P. (1950). \"Creativity.\" American Psychologist, 5(9), 444-454." .
+
+
+###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#ConvergentThinking
+creon:ConvergentThinking rdf:type owl:Class ;
+                         rdfs:subClassOf creon:AssociativeProcess ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty creon:induces ;
+                                           owl:someValuesFrom creon:Convergence
+                                         ] .
+
+
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#CreativeDomain
 creon:CreativeDomain rdf:type owl:Class ;
                      rdfs:subClassOf creon:SocialSituation ;
-                     dc:creator "Aldo Gangemi"^^xsd:string ;
+                     dc:creator "Aldo Gangemi" ;
                      dc:date "2023-09-06T15:22:48Z"^^xsd:dateTime ;
                      rdfs:comment "A creative domain (e.g., music) (Csikszentmihalyi, 1997)." ;
                      rdfs:label "Creative Domain" .
@@ -455,7 +520,7 @@ creon:CreativeIdea rdf:type owl:Class ;
                    rdfs:subClassOf creon:CreativitySituation ;
                    dc:creator "Aldo Gangemi" ;
                    dc:date "2023-08-31T10:49:05Z"^^xsd:dateTime ;
-                   rdfs:comment "it is typically defined as a concept or thought that arises in the mind of an individual and can be communicated to others" ;
+                   rdfs:comment "it is typically defined as a novel or divergent concept or thought that arises in the mind of an individual and can be communicated to others" ;
                    rdfs:label "Creative Idea" ;
                    <http://www.w3.org/ns/prov#wasDerivedFrom> "Rhodes, M. (1961). An analysis of creativity. The Phi Delta Kappan 42, 305–310." .
 
@@ -571,7 +636,7 @@ creon:DefaultModeNetwork rdf:type owl:Class ;
                                            owl:onProperty creon:hasPart ;
                                            owl:someValuesFrom creon:NeuralPattern
                                          ] ;
-                         dc:creator "Aldo Gangemi"^^xsd:string ;
+                         dc:creator "Aldo Gangemi" ;
                          dc:date "2023-09-04T15:19:06Z"^^xsd:dateTime ;
                          rdfs:comment "A network of interconnected brain areas that are activated when an individual is at rest" ;
                          rdfs:label "DMN" ,
@@ -579,12 +644,36 @@ creon:DefaultModeNetwork rdf:type owl:Class ;
                          <http://www.w3.org/ns/prov#wasAttributedTo> "Raichle, M. E., MacLeod, A. M., Snyder, A. Z., Powers, W. J., Gusnard, D. A., & Shulman, G. L. (2001). A default mode of brain function. Proceedings of the national academy of sciences, 98(2), 676-682." .
 
 
+###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#Divergence
+creon:Divergence rdf:type owl:Class ;
+                 rdfs:subClassOf creon:CreativitySituation ,
+                                 fschema:ConceptualFrame ;
+                 rdfs:comment """Divergent thinking is the process of generating multiple, unique solutions to a problem. It involves open-mindedness, and the ability to think in varied directions.
+Characteristics include:
+- Flexibility: Ability to adapt and think beyond conventional boundaries.
+- Originality: Focuses on producing original and diverse ideas.
+- Exploration of Alternatives: Expands on various possibilities rather than narrowing them down.
+Examples: Brainstorming sessions, creative writing, and artistic projects.
+
+Convergent Thinking is essential for tasks that require a definitive answer and where precision is critical. It helps in refining ideas and ensuring they are practical and viable.
+Divergent Thinking is crucial for the initial stages of problem-solving, where generating a wide range of ideas and exploring different possibilities can lead to innovative solutions.
+Guilford's theory suggests that both types of thinking are necessary for creativity. Effective problem-solving and creative processes often involve alternating between divergent and convergent thinking, allowing individuals to generate a broad array of ideas and then narrow them down to the most effective solutions.""" ;
+                 <http://www.w3.org/ns/prov#wasAttributedTo> "Guilford, J.P. (1950). \"Creativity.\" American Psychologist, 5(9), 444-454." .
+
+
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#DivergentThinking
 creon:DivergentThinking rdf:type owl:Class ;
-                        rdfs:subClassOf creon:AssociativeProcess ;
+                        rdfs:subClassOf creon:AssociativeProcess ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty creon:induces ;
+                                          owl:someValuesFrom creon:Divergence
+                                        ] ;
                         dc:creator "Aldo Gangemi" ;
                         dc:date "2023-09-01T12:55:30Z"^^xsd:dateTime ;
-                        rdfs:comment "it is aimed at finding more unconventional and unexpected answers" ;
+                        rdfs:comment """Divergent thinking is a thought process used to generate creative ideas by exploring many possible solutions. 
+It typically occurs in a spontaneous, free-flowing, \"non-linear\" manner, such that many ideas are generated in an emergent cognitive fashion. 
+Many possible solutions are explored in a short amount of time, and unexpected connections are drawn. 
+Following divergent thinking, ideas and information are organized and structured using convergent thinking, which follows a particular set of logical steps to arrive at one solution, which in some cases is a \"correct\" solution (Guilford, 1956)""" ;
                         rdfs:label "Divergent Thinking" ;
                         <http://www.w3.org/ns/prov#wasAttributedTo> """Guilford, J. P. (1973). Characteristics of Creativity.
 Similar to Amabile's (1996) Creative Thinking.""" .
@@ -593,7 +682,7 @@ Similar to Amabile's (1996) Creative Thinking.""" .
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#EmotionDynamics
 creon:EmotionDynamics rdf:type owl:Class ;
                       rdfs:subClassOf creon:PersonalSituation ;
-                      dc:creator "Aldo Gangemi"^^xsd:string ;
+                      dc:creator "Aldo Gangemi" ;
                       dc:date "2023-09-06T15:45:16Z"^^xsd:dateTime ;
                       rdfs:label "Emotion Dynamics" ;
                       <http://www.w3.org/ns/prov#wasAttributedTo> "From Corazza's DUCP (2019): Emotions are central to the creative process, influencing motivation, direction, and quality." .
@@ -612,7 +701,7 @@ creon:EnvironmentalCondition rdf:type owl:Class ;
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#ErrorDynamics
 creon:ErrorDynamics rdf:type owl:Class ;
                     rdfs:subClassOf creon:ExternalRandomEvent ;
-                    dc:creator "Aldo Gangemi"^^xsd:string ;
+                    dc:creator "Aldo Gangemi" ;
                     dc:date "2023-09-12T15:31:35Z"^^xsd:dateTime ;
                     rdfs:comment "Errors randomly happening in a creative process, reused to make sense of them (e.g., from Simonton, 2003)." ;
                     rdfs:label "Error Dynamics" .
@@ -621,7 +710,7 @@ creon:ErrorDynamics rdf:type owl:Class ;
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#EvaluationDynamics
 creon:EvaluationDynamics rdf:type owl:Class ;
                          rdfs:subClassOf creon:PersonalAbility ;
-                         dc:creator "Aldo Gangemi"^^xsd:string ;
+                         dc:creator "Aldo Gangemi" ;
                          dc:date "2023-09-06T14:37:54Z"^^xsd:dateTime ;
                          rdfs:label "Evaluation" ;
                          <http://www.w3.org/ns/prov#wasAttributedTo> "Corazza's (2019) Evaluation Dynamics: continuous assessment shaping current and future creation efforts. Cf. also Moruzzi (2020)." .
@@ -645,7 +734,7 @@ creon:ExperimentalFinding rdf:type owl:Class ;
                                             owl:onProperty creon:usingMethod ;
                                             owl:someValuesFrom creon:ExperimentalMethod
                                           ] ;
-                          dc:creator "Aldo Gangemi"^^xsd:string ;
+                          dc:creator "Aldo Gangemi" ;
                           dc:date "2023-09-06T16:29:10Z"^^xsd:dateTime ;
                           rdfs:label "Experimental finding" ;
                           <http://www.w3.org/ns/prov#wasAttributedTo> """Observations carried out during experimental studies.
@@ -654,14 +743,14 @@ In creativity neuroscience, it represents relations between neural patterns, cre
 
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#ExperimentalMethod
 creon:ExperimentalMethod rdf:type owl:Class ;
-                         dc:creator "Aldo Gangemi"^^xsd:string ;
+                         dc:creator "Aldo Gangemi" ;
                          dc:date "2023-09-06T16:53:01Z"^^xsd:dateTime ;
                          rdfs:label "Experimental method" .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#ExperimentalTask
 creon:ExperimentalTask rdf:type owl:Class ;
-                       dc:creator "Aldo Gangemi"^^xsd:string ;
+                       dc:creator "Aldo Gangemi" ;
                        dc:date "2023-09-06T17:13:41Z"^^xsd:dateTime ;
                        rdfs:label "Experimental task" .
 
@@ -669,7 +758,7 @@ creon:ExperimentalTask rdf:type owl:Class ;
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#ExpertCommunity
 creon:ExpertCommunity rdf:type owl:Class ;
                       rdfs:subClassOf creon:SocialSituation ;
-                      dc:creator "Aldo Gangemi"^^xsd:string ;
+                      dc:creator "Aldo Gangemi" ;
                       dc:date "2023-09-06T15:21:32Z"^^xsd:dateTime ;
                       rdfs:comment "Csikszentmihalyi's (1997) field of experts in a domain (e.g., music)." ;
                       rdfs:label "Expert Community" .
@@ -678,7 +767,7 @@ creon:ExpertCommunity rdf:type owl:Class ;
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#Expertise
 creon:Expertise rdf:type owl:Class ;
                 rdfs:subClassOf creon:PersonalAbility ;
-                dc:creator "Aldo Gangemi"^^xsd:string ;
+                dc:creator "Aldo Gangemi" ;
                 dc:date "2023-09-06T15:28:05Z"^^xsd:dateTime ;
                 rdfs:comment "Amabile (1996): the basis of creative work which includes knowledge, technical skills and talent." ;
                 rdfs:label "Expertise" .
@@ -687,7 +776,7 @@ creon:Expertise rdf:type owl:Class ;
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#ExternalRandomEvent
 creon:ExternalRandomEvent rdf:type owl:Class ;
                           rdfs:subClassOf creon:SocialSituation ;
-                          dc:creator "Aldo Gangemi"^^xsd:string ;
+                          dc:creator "Aldo Gangemi" ;
                           dc:date "2023-09-06T15:46:12Z"^^xsd:dateTime ;
                           rdfs:label "External Random Event" ;
                           <http://www.w3.org/ns/prov#wasAttributedTo> "From Corazza's DUCP (2019): Random external events that influence creative processes unpredictably." .
@@ -708,7 +797,7 @@ creon:FluidIntelligence rdf:type owl:Class ;
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#Group
 creon:Group rdf:type owl:Class ;
             rdfs:subClassOf dul:Agent ;
-            dc:creator "Aldo Gangemi"^^xsd:string ;
+            dc:creator "Aldo Gangemi" ;
             dc:date "2023-09-14T09:09:40Z"^^xsd:dateTime ;
             rdfs:comment "An explicitly created group of natural persons, here for artistic purposes (a music band, a literary, artistic, or scientific group, etc." ;
             rdfs:label "Group" .
@@ -731,7 +820,7 @@ creon:InfluenceDynamics rdf:type owl:Class ;
                         owl:hasKey ( creon:influenced
                                      creon:influencer
                                    ) ;
-                        dc:creator "Aldo Gangemi"^^xsd:string ;
+                        dc:creator "Aldo Gangemi" ;
                         dc:date "2023-09-14T08:31:53Z"^^xsd:dateTime ;
                         rdfs:comment """The dynamics of influences in a creative domain. Multiple relations may affect such dynamics temporally, spatially, cognitively, and emotionally.
 Cf. the influencedBy properties.
@@ -743,7 +832,7 @@ In order to generate an influence dynamics case from binary influence relations,
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#KnowledgeDynamics
 creon:KnowledgeDynamics rdf:type owl:Class ;
                         rdfs:subClassOf creon:SocialSituation ;
-                        dc:creator "Aldo Gangemi"^^xsd:string ;
+                        dc:creator "Aldo Gangemi" ;
                         dc:date "2023-09-06T15:40:40Z"^^xsd:dateTime ;
                         rdfs:label "Knowledge Dynamics" ;
                         <http://www.w3.org/ns/prov#wasAttributedTo> "From Corazza's DUCP (2019): New information and connections that continuously change, shaping the creative process." .
@@ -757,6 +846,24 @@ creon:LegislativeCognitiveStyle rdf:type owl:Class ;
                                 rdfs:comment "It represents the possibility of generating new idea" ;
                                 rdfs:label "Legislative Cognitive Style" ;
                                 <http://www.w3.org/ns/prov#wasAttributedTo> "Guilford, J. P. (1973). Characteristics of Creativity." .
+
+
+###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#MetaConvergence
+creon:MetaConvergence rdf:type owl:Class ;
+                      rdfs:subClassOf creon:CreativitySituation ,
+                                      fschema:ConceptualFrame ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty creon:optimizes ;
+                                        owl:someValuesFrom creon:Convergence
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty creon:optimizes ;
+                                        owl:someValuesFrom creon:Divergence
+                                      ] ;
+                      rdfs:comment """Guilford (1950) introduced the notion of Elaboration of divergence to make product's features functionally effective (including purely aesthetical functions).
+This can be considered as a 'meta-convergence' after the disruptive action of divergent thinking.
+While divergent thinking operates on the creative agent (cognitively, personally, socially), the visible creative effects are on the product. These can only be measured with respect to the original as well as long-term context (Creativity Press) of product production, reception, appraisal, both in terms of formal and content features.
+If metrics or critical appraisal is applied to a product, we need to recover enough **background knowledge** (as found in high-level expertise) about formal vs. content-wise convergence/divergence dynamics, according to the specific product type (which could be either generic, e.g., \"novel\", or more specific, e.g., \"sci-fi\" or \"cyberpunk\"), material, original good practices, original reception patterns, long-term influence, etc.""" .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#Motivation
@@ -773,7 +880,7 @@ Similar to Amabile's (1996) Intrinsic Motivation.""" .
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#Naivety
 creon:Naivety rdf:type owl:Class ;
               rdfs:subClassOf creon:PersonalAbility ;
-              dc:creator "Aldo Gangemi"^^xsd:string ;
+              dc:creator "Aldo Gangemi" ;
               dc:date "2023-09-06T14:38:04Z"^^xsd:dateTime ;
               rdfs:comment "An unconscious elaboration (Baumeister et al., 2014) which ignores rigid thought patterns and allows for a more infantile and playful vision (Csikszentmihalyi 1996; Gaut 2012; Piirto 2010)." ;
               rdfs:label "Naivety" ;
@@ -794,7 +901,7 @@ creon:NeuralPattern rdf:type owl:Class ;
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#NonconsciousProcess
 creon:NonconsciousProcess rdf:type owl:Class ;
                           rdfs:subClassOf creon:PersonalProcess ;
-                          dc:creator "Aldo Gangemi"^^xsd:string ;
+                          dc:creator "Aldo Gangemi" ;
                           dc:date "2023-09-06T16:12:05Z"^^xsd:dateTime ;
                           rdfs:label "Nonconscious Process" ;
                           <http://www.w3.org/ns/prov#wasAttributedTo> "Wallas (1926): incubation and illumination (insight, aha moment)." .
@@ -826,6 +933,31 @@ creon:PersonalAbility rdf:type owl:Class ;
                       <http://www.w3.org/ns/prov#wasDerivedFrom> """Sternberg, R. J. (1988). A three-facet model of creativity.
 Rhodes, M. (1961). An analysis of creativity. The Phi Delta Kappan 42, 305–310.
 Kenett, Y. N., Kraemer, D. J., Alfred, K. L., Colaizzi, G. A., Cortes, R. A., & Green, A. E. (2020). Developing a neurally informed ontology of creativity measurement. NeuroImage, 221, 117166.""" .
+
+
+###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#PersonalDivergence
+creon:PersonalDivergence rdf:type owl:Class ;
+                         rdfs:subClassOf creon:Divergence ,
+                                         creon:PersonalSituation ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty creon:correlatesWith ;
+                                           owl:someValuesFrom creon:Openness
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty creon:correlatesWith ;
+                                           owl:someValuesFrom creon:Resilience
+                                         ] ;
+                         dc:creator "Aldo Gangemi" ;
+                         dc:date "2024-06-11T08:30:09Z"^^xsd:dateTime ;
+                         rdfs:comment """Individual's unique way of thinking (intended as decision making, acting, etc.), influenced by personality traits and personal experiences.
+
+Studies in personality neuroscience reveal how the interplay between individual differences in brain structure/function and personality traits contribute to unique creative expressions and innovations.
+
+It correlates with personality traits like openness to experience and resilience.
+
+It may lead to adapting one's role or perspective in response to new challenges or environments, leading to personal growth and novel insights, e.g. with role fluidity in professional development. 
+It is also associable to shifts in personal beliefs and values in response to introspection and new experiences or information, altering one's worldview.""" ;
+                         <http://www.w3.org/ns/prov#wasAttributedTo> "Feist, G. J. (1998). A meta-analysis of personality in scientific and artistic creativity, Allport (1937), Personality studies" .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#PersonalProcess
@@ -873,7 +1005,7 @@ creon:Population rdf:type owl:Class ;
                                    owl:onProperty creon:hasPart ;
                                    owl:someValuesFrom dul:NaturalPerson
                                  ] ;
-                 dc:creator "Aldo Gangemi"^^xsd:string ;
+                 dc:creator "Aldo Gangemi" ;
                  dc:date "2023-09-06T17:14:32Z"^^xsd:dateTime ;
                  rdfs:comment "A group of people inferred to have a certain characteristic based on a controlled sampling of subjects in an experimental task." ;
                  rdfs:label "Population" .
@@ -891,22 +1023,29 @@ creon:PracticalIntelligence rdf:type owl:Class ;
 
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#ProblemSolving
 creon:ProblemSolving rdf:type owl:Class ;
-                     rdfs:subClassOf creon:PersonalAbility ;
-                     dc:creator "Aldo Gangemi"^^xsd:string ;
+                     rdfs:subClassOf creon:ConsciousProcess ;
+                     dc:creator "Aldo Gangemi" ;
                      dc:date "2023-09-06T14:37:30Z"^^xsd:dateTime ;
                      rdfs:label "Problem Solving" ;
                      <http://www.w3.org/ns/prov#wasAttributedTo> "Moruzzi (2020)" .
 
 
+###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#ProductDivergence
+creon:ProductDivergence rdf:type owl:Class ;
+                        rdfs:subClassOf creon:Divergence ;
+                        rdfs:comment "The divergence featured by a specific product of creativity." .
+
+
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#PsychophysiologicalState
 creon:PsychophysiologicalState rdf:type owl:Class ;
                                rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                                 owl:onProperty creon:correlatesWith ;
-                                                 owl:someValuesFrom creon:CreativeIdea
-                                               ] ,
-                                               [ rdf:type owl:Restriction ;
                                                  owl:onProperty creon:exhibitedBy ;
                                                  owl:someValuesFrom dul:NaturalPerson
+                                               ] ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty creon:correlatesWith ;
+                                                 owl:minQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
+                                                 owl:onClass creon:CreativeIdea
                                                ] ;
                                dc:creator "Aldo Gangemi" ;
                                dc:date "2023-08-31T14:05:06Z"^^xsd:dateTime ;
@@ -918,7 +1057,7 @@ creon:PsychophysiologicalState rdf:type owl:Class ;
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#Resilience
 creon:Resilience rdf:type owl:Class ;
                  rdfs:subClassOf creon:PersonalAbility ;
-                 dc:creator "Aldo Gangemi"^^xsd:string ;
+                 dc:creator "Aldo Gangemi" ;
                  dc:date "2023-09-06T15:57:55Z"^^xsd:dateTime ;
                  rdfs:label "Resilience" ;
                  <http://www.w3.org/ns/prov#wasAttributedTo> "Corazza, 2019: the capacity to withstand or recover quickly from difficulties." .
@@ -953,11 +1092,26 @@ creon:SeekingSystem rdf:type owl:Class ;
                                       owl:onProperty creon:correlatesWith ;
                                       owl:someValuesFrom creon:BrainArea
                                     ] ;
-                    dc:creator "Aldo Gangemi"^^xsd:string ;
+                    dc:creator "Aldo Gangemi" ;
                     dc:date "2023-09-04T15:19:17Z"^^xsd:dateTime ;
                     rdfs:comment "A motivational system that drives exploration, search for information, and  desire for new experiences" ;
                     rdfs:label "Seeking System" ;
                     <http://www.w3.org/ns/prov#wasAttributedTo> "Panksepp, J., & Biven, L. (2012). A meditation on the affective neuroscientific view of human and animalian MindBrains. From the couch to the lab: Trends in psychodynamic neuroscience, 145-175." .
+
+
+###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#SocialDivergence
+creon:SocialDivergence rdf:type owl:Class ;
+                       rdfs:subClassOf creon:Divergence ,
+                                       creon:SocialSituation ;
+                       dc:creator "Aldo Gangemi" ;
+                       dc:date "2024-06-11T08:31:13Z"^^xsd:dateTime ;
+                       rdfs:comment """Diversity and dynamics within groups or societies influencing creative and innovative processes.
+
+Insights from social neuroscience and studies on group behavior elucidate how communities navigate consensus, conflict, and change.
+
+It may lead to the collective reevaluation and modification of social norms, roles, or practices in response to changing circumstances.
+At macroscopic level, it can lead to societal and cultural shifts that redefine paradigms, such as the transition from industrial to information societies.""" ;
+                       <http://www.w3.org/ns/prov#wasAttributedTo> "Paulus, P. B., & Nijstad, B. A. (2003). Group creativity: Innovation through collaboration, Durkheim (1893), Social dynamics" .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#SocialSituation
@@ -982,7 +1136,7 @@ creon:SocialSituation rdf:type owl:Class ;
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#Space-TimeDynamicContext
 creon:Space-TimeDynamicContext rdf:type owl:Class ;
                                rdfs:subClassOf creon:SocialSituation ;
-                               dc:creator "Aldo Gangemi"^^xsd:string ;
+                               dc:creator "Aldo Gangemi" ;
                                dc:date "2023-09-06T15:34:06Z"^^xsd:dateTime ;
                                rdfs:label "Space-time Dynamic Context" ;
                                <http://www.w3.org/ns/prov#wasAttributedTo> "From Corazza's DUCP (2019):The environmental, historical, and personal experiences." .
@@ -1032,44 +1186,68 @@ dul:SocialPerson rdf:type owl:Class ;
 dul:TimeInterval rdf:type owl:Class .
 
 
+###  https://w3id.org/framester/schema/ConceptualFrame
+fschema:ConceptualFrame rdf:type owl:Class .
+
+
 #################################################################
 #    Individuals
 #################################################################
 
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#Amygdala
-creon:Amygdala rdf:type owl:NamedIndividual ;
-               dc:creator "Aldo Gangemi"^^xsd:string ;
+creon:Amygdala rdf:type owl:NamedIndividual ,
+                        creon:BrainArea ;
+               dc:creator "Aldo Gangemi" ;
                dc:date "2023-09-06T16:47:13Z"^^xsd:dateTime .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#AnteriorCingulateCortex
-creon:AnteriorCingulateCortex rdf:type owl:NamedIndividual ;
-                              dc:creator "Aldo Gangemi"^^xsd:string ;
+creon:AnteriorCingulateCortex rdf:type owl:NamedIndividual ,
+                                       creon:BrainArea ;
+                              dc:creator "Aldo Gangemi" ;
                               dc:date "2023-09-06T16:46:18Z"^^xsd:dateTime .
 
 
+###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#DivergentThinkingTest-Rebus
+creon:DivergentThinkingTest-Rebus rdf:type owl:NamedIndividual ,
+                                           creon:ExperimentalTask ;
+                                  dc:creator "Aldo Gangemi" ;
+                                  dc:date "2024-02-19T17:37:16Z"^^xsd:dateTime .
+
+
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#Hippocampus
-creon:Hippocampus rdf:type owl:NamedIndividual ;
-                  dc:creator "Aldo Gangemi"^^xsd:string ;
+creon:Hippocampus rdf:type owl:NamedIndividual ,
+                           creon:BrainArea ;
+                  dc:creator "Aldo Gangemi" ;
                   dc:date "2023-09-06T16:47:25Z"^^xsd:dateTime .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#MedialPrefrontalCortex
-creon:MedialPrefrontalCortex rdf:type owl:NamedIndividual ;
-                             dc:creator "Aldo Gangemi"^^xsd:string ;
+creon:MedialPrefrontalCortex rdf:type owl:NamedIndividual ,
+                                      creon:BrainArea ;
+                             dc:creator "Aldo Gangemi" ;
                              dc:date "2023-09-06T16:46:05Z"^^xsd:dateTime .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#MedialTemporalCortex
-creon:MedialTemporalCortex rdf:type owl:NamedIndividual ;
-                           dc:creator "Aldo Gangemi"^^xsd:string ;
+creon:MedialTemporalCortex rdf:type owl:NamedIndividual ,
+                                    creon:BrainArea ;
+                           dc:creator "Aldo Gangemi" ;
                            dc:date "2023-09-06T16:46:22Z"^^xsd:dateTime .
 
 
 ###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#PosteriorParietalCortex
-creon:PosteriorParietalCortex rdf:type owl:NamedIndividual ;
-                              dc:creator "Aldo Gangemi"^^xsd:string ;
+creon:PosteriorParietalCortex rdf:type owl:NamedIndividual ,
+                                       creon:BrainArea ;
+                              dc:creator "Aldo Gangemi" ;
                               dc:date "2023-09-06T16:46:12Z"^^xsd:dateTime .
+
+
+###  http://www.ontologydesignpatterns.org/ont/creativity/creon.owl#RemoteAssociationDivergentThinkingTest-RAT
+creon:RemoteAssociationDivergentThinkingTest-RAT rdf:type owl:NamedIndividual ,
+                                                          creon:ExperimentalTask ;
+                                                 dc:creator "Aldo Gangemi" ;
+                                                 dc:date "2024-02-19T17:37:47Z"^^xsd:dateTime .
 
 
 #################################################################
@@ -1085,4 +1263,4 @@ creon:PosteriorParietalCortex rdf:type owl:NamedIndividual ;
 ] .
 
 
-###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
