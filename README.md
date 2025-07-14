@@ -30,7 +30,8 @@ Some important questions need special investigation, concerning computational cr
 
 Specific folders (e.g., 4Pexp for Rhodes' 4P theory) will contain data and code for experiments dealing with creativity categories and correlation to personal traits.
 
-<img width="714" height="354" alt="image" src="https://github.com/user-attachments/assets/d4843871-2110-4757-a673-3f6b91b2e587" />
+<img width="699" height="409" alt="image" src="https://github.com/user-attachments/assets/542acc78-ae83-4ffa-8aca-89dbaa0de339" />
+
 
 
 
