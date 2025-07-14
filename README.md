@@ -3,7 +3,7 @@ An integrated ontology of creativity theories, using OWL2:
 
 (a) Personal creativity:
 Wallace's personal creativity phases,
-Guilford's personal creativity traits,
+Guilford's personal creativity traits, divergence/convergence/elaboration,
 Smith's cognitive creativity,
 Moruzzi's personal creativity keys
 
@@ -21,6 +21,8 @@ Jenning's computational creativity,
 
 (d) neuro creativity:
 Kenett's metaanalysis of neural correlates of creativity
+
+(e) meta-convergence frames, inspired by Guilford's elaboration, but designed as a complex metric on top of Rhodes' 4P theory.
 
 Some important questions need special investigation, concerning computational creativity, fruition, and opera aperta:
 
